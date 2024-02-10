@@ -25,12 +25,12 @@ body {
   z-index: 99;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
-
+ 
 .app-bar .app-bar__menu {
   display: flex;
   align-items: center;
 }
-
+ 
 .app-bar .app-bar__menu button {
   background-color: transparent;
   border: none;
@@ -38,19 +38,19 @@ body {
   padding: 8px;
   cursor: pointer;
 }
-
+ 
 .app-bar .app-bar__brand {
   display: flex;
   align-items: center;
 }
-
+ 
 .app-bar .app-bar__brand h1 {
   color: #db0000;
   text-transform: uppercase;
   font-size: 22px;
   user-select: none;
 }
-
+ 
 .app-bar .app-bar__navigation {
   position: absolute;
   top: 50px;
@@ -59,13 +59,13 @@ body {
   transition: all 0.3s;
   padding: 8px;
   background-color: white;
-  overflow: none;
+  overflow: hidden;
 }
-
+ 
 .app-bar .app-bar__navigation.open {
-  left: 0px;
+  left: 0;
 }
-
+ 
 .app-bar .app-bar__navigation ul li a {
   display: inline-block;
   text-decoration: none;
