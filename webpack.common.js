@@ -47,7 +47,24 @@ module.exports = {
     }),
 
     new WorkboxWebpackPlugin.GenerateSW({
-      swDest: './sw/bundle.js',
+      swDest: './sw.bundle.js',
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://api.themoviedb.org/3/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'themoviedb-api',
+          },
+        },
+
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://image.tmdb.org/t/p/w500/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'themoviedb-image-api',
+          },
+        },
+      ],
     }),
   ],
 };
