@@ -196,7 +196,15 @@ footer {
   padding: 16px;
 }
 
+footer #footerTools {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
 footer p {
+  margin-top: 16px;
   text-align: center;
   color: #aaaaaa;
 }
@@ -204,4 +212,32 @@ footer p {
 footer p a {
   color: #db0000;
   text-decoration: none;
+}
+
+/* BUTTON */
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #db0000;
+  border: solid 1px #770000;
+  border-radius: 4px;
+
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #db0000bb;
+}
+
+.btn:active {
+  background-color: #db0000dd;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #db000055;
 }
