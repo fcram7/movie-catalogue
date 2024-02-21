@@ -1,25 +1,26 @@
+/* eslint-disable no-new */
 import FavoriteMoviesIdb from '../../data/favorite-movies-idb';
-import { createMovieItemTemplate } from '../templates/template-creator';
+import FavoriteMovieView from './liked-movies/favorite-movie-view';
+import FavoriteMovieSearchPresenter from './liked-movies/favorite-movie-search-presenter';
+import FavoriteMovieShowPresenter from './liked-movies/favorite-movie-show-presenter';
+
+const view = new FavoriteMovieView();
 
 const Like = {
   async render() {
-    return `
-      <div class="content">
-        <h2 class="content__heading">Your Liked Movies</h2>
-        <div id="movies" class="movies">
-        
-        </div>
-      </div>
-    `;
+    return view.getTemplate();
   },
 
   async afterRender() {
-    const likedMovies = await FavoriteMoviesIdb.getAllMovies();
-    const movieContainer = document.querySelector('#movies');
+    // const likedMovies = await FavoriteMoviesIdb.getAllMovies();
+    // const movieContainer = document.querySelector('#movies');
 
-    likedMovies.forEach((movie) => {
-      movieContainer.innerHTML += createMovieItemTemplate(movie);
-    });
+    // likedMovies.forEach((movie) => {
+    //   movieContainer.innerHTML += createMovieItemTemplate(movie);
+    // });
+
+    new FavoriteMovieSearchPresenter({ view, favoriteMovies: FavoriteMoviesIdb });
+    new FavoriteMovieShowPresenter({ view, favoriteMovies: FavoriteMoviesIdb });
   },
 };
 

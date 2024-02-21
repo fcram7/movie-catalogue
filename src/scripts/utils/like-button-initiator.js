@@ -1,13 +1,13 @@
-import FavoriteMoviesIdb from '../data/favorite-movies-idb';
 import {
   createLikeButtonTemplate,
   createLikedButtonTemplate,
 } from '../views/templates/template-creator';
 
 const LikeButtonInitiator = {
-  async init({ likeButtonInitiator, movie }) {
-    this._likeButtonContainer = likeButtonInitiator;
+  async init({ likeButtonContainer, favoriteMovies, movie }) {
+    this._likeButtonContainer = likeButtonContainer;
     this._movie = movie;
+    this._favoriteMovies = favoriteMovies;
 
     await this._renderButton();
   },
@@ -23,7 +23,7 @@ const LikeButtonInitiator = {
   },
 
   async _isMovieExist(id) {
-    const movie = await FavoriteMoviesIdb.getMovie(id);
+    const movie = await this._favoriteMovies.getMovie(id);
     return !!movie;
   },
 
@@ -32,7 +32,7 @@ const LikeButtonInitiator = {
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await FavoriteMoviesIdb.deleteMovie(this._movie.id);
+      await this._favoriteMovies.deleteMovie(this._movie.id);
       this._renderButton();
     });
   },
@@ -42,7 +42,7 @@ const LikeButtonInitiator = {
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await FavoriteMoviesIdb.editMovie(this._movie);
+      await this._favoriteMovies.editMovie(this._movie);
       this._renderButton();
     });
   },
